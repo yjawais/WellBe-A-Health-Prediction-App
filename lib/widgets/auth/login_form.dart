@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:google_sign_in/google_sign_in.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../screens/auth/signup_screen.dart';
@@ -45,22 +45,22 @@ class _LoginFormState extends State<LoginForm> {
     }
   }
 
-//   Future<UserCredential> signInWithGoogle() async {
-//   // Trigger the authentication flow
-//   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  Future<UserCredential> signInWithGoogle() async {
+  // Trigger the authentication flow
+  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-//   // Obtain the auth details from the request
-//   final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+  // Obtain the auth details from the request
+  final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
-//   // Create a new credential
-//   final credential = GoogleAuthProvider.credential(
-//     accessToken: googleAuth?.accessToken,
-//     idToken: googleAuth?.idToken,
-//   );
+  // Create a new credential
+  final credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth?.accessToken,
+    idToken: googleAuth?.idToken,
+  );
 
-//   // Once signed in, return the UserCredential
-//   return await FirebaseAuth.instance.signInWithCredential(credential);
-// }
+  // Once signed in, return the UserCredential
+  return await FirebaseAuth.instance.signInWithCredential(credential);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -195,7 +195,7 @@ class _LoginFormState extends State<LoginForm> {
                             color: Colors.white,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0)),
-                            onPressed: () {}, //signInWithGoogle,
+                            onPressed: signInWithGoogle,
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[

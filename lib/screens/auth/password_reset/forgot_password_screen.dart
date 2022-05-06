@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import '../../../designs/gradient_button.dart';
 import '../../../designs/background.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'reset_password_screen.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
-// @override
-// Future<void> resetPassword(String email) async {
-//     await _firebaseAuth.sendPasswordResetEmail(email: email);
-// }
+ final _formKey = GlobalKey<FormState>();
+final emailController=TextEditingController();
+
+@override
+void dispose(){
+  emailController.dispose();
+ // super.dispose();
+}
+  var _userEmail = '';
+
+Future<void> resetPassword() async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text.trim());
+}
 
   @override
   Widget build(BuildContext context) {
@@ -80,22 +89,42 @@ class ForgotPasswordScreen extends StatelessWidget {
                                   ),
                                 )
                               ],
-                            )),
+                            ),),
                       ],
                     ),
                   ),
                 ),
+                TextFormField(
+                        key: const ValueKey('email'),
+                        controller: emailController,
+                        autocorrect: false,
+                        textCapitalization: TextCapitalization.none,
+                        validator: (value) {
+                          if (value!.isEmpty || !value.contains('@')) {
+                            return 'Enter valid email';
+                          }
+                          return null;
+                        },
+                        textInputAction: TextInputAction.done,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: const InputDecoration(
+                          labelText: 'Email',
+                          border: InputBorder.none,
+                        ),
+                       
+                      ),
                 const SizedBox(height: 200),
                 Center(
                   child: GradientButton(
                     text: "Next",
                     buttonWidth: 150,
-                    function: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ResetPasswordScreen(),
-                      ),
-                    ),
+                    function: resetPassword,
+                    // () => Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => ResetPasswordScreen(),
+                    //   ),
+                    // ),
                   ),
                 ),
               ],
