@@ -241,7 +241,7 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  if (widget.isLoading) const CircularProgressIndicator(),
+                  if (widget.isLoading) CircularProgressIndicator(),
                   if (!widget.isLoading)
                     GradientButton(
                       text: "Login",
@@ -249,7 +249,7 @@ class _LoginFormState extends State<LoginForm> {
                       buttonWidth: 150,
                     ),
                     const SizedBox(height: 10),
-                  if (!widget.isLoading)
+                 // if (!widget.isLoading)
                     FlatButton(
                       textColor: Theme.of(context).accentColor,
                       onPressed: () {

@@ -30,9 +30,9 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.transparent,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: StreamBuilder(
+      home: StreamBuilder<User?>(
           stream: FirebaseAuth.instance.authStateChanges(),
-          builder: (ctx, userSnapshot) {
+          builder: (context, userSnapshot) {
             
             if (userSnapshot.hasData) {
               return HomeScreen();
