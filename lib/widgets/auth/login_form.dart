@@ -120,9 +120,18 @@ class _LoginFormState extends State<LoginForm> {
                           return null;
                         },
                         keyboardType: TextInputType.emailAddress,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: 'Email',
                           border: InputBorder.none,
+                           prefixIcon: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Image.asset(
+                              'assets/images/Message.png',
+                              width: 24,
+                              height: 24,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
                         ),
                         onSaved: (value) {
                           _userEmail = value as String;
@@ -158,14 +167,24 @@ class _LoginFormState extends State<LoginForm> {
                           }
                           return null;
                         },
-                        decoration: const InputDecoration(
+                        decoration:  InputDecoration(
                           labelText: 'Password',
                           border: InputBorder.none,
+                            prefixIcon: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Image.asset(
+                              'assets/images/Lock.png',
+                              width: 24,
+                              height: 24,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
                         ),
                         onSaved: (value) {
                           _userPassword = value as String;
                         },
                         obscureText: true,
+
                       ),
                     ),
                   ),
