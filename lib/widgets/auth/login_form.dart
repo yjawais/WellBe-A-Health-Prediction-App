@@ -3,6 +3,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../screens/auth/signup_screen.dart';
+//import '../../screens/auth/password_reset/passforgt.dart';
 
 import '../../screens/auth/password_reset/forgot_password_screen.dart';
 import '../../designs/gradient_button.dart';
