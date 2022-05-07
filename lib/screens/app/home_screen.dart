@@ -5,7 +5,6 @@ import '../../designs/background.dart';
 import '../../widgets/app/tips_card.dart';
 
 class HomeScreen extends StatelessWidget {
-   static const routeName = '/home';
   @override
   Widget build(BuildContext context) {
     return Stack(

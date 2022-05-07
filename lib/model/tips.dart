@@ -24,12 +24,12 @@ const Dummy_Tips = [
     '“Let food be thy medicine and medicine be thy food.” – Hippocrates',
   ),
    Tip(
-    8,
+    0,
     '“Physical fitness is the first requisite of happiness.” – Joseph Pilates',
   ),
    Tip(
     4,
-    '“Good health is not something we can buy. However, it can be an extremely valuable savings account.”     – Anne Wilson Schaef',
+    '“Good health is not something we can buy. ”– Anne Wilson Schaef',
   ),
    Tip(
     5,

@@ -18,7 +18,7 @@ class TipsCard extends StatelessWidget {
 //  print(result);
 //     return result;
 //   }
-    int max = 9;
+    int max = 7;
 
     int randomNumber = Random().nextInt(max) + 1;
     //  final tipId = ModalRoute.of(context)!.settings.arguments as String;
@@ -35,11 +35,11 @@ class TipsCard extends StatelessWidget {
         children: <Widget>[
           Container(
             child: Container(
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(10),
               margin: const EdgeInsets.only(left: 44.0),
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                     "Tip Of The Day",
                     style: TextStyle(
                       fontSize: 18,
