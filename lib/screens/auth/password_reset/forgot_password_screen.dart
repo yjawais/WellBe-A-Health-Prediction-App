@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../designs/gradient_button.dart';
 import '../../../designs/background.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'reset_password_screen.dart';
+import 'package:flutter/services.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -16,9 +16,30 @@ class ForgotPasswordScreen extends StatelessWidget {
 
   var _userEmail = '';
 
-  Future<void> resetPassword() async {
-    await FirebaseAuth.instance
-        .sendPasswordResetEmail(email: emailController.text.trim());
+  Future<void> resetPassword(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: emailController.text.trim());
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Password Reset Link Sent."),
+          backgroundColor: Theme.of(context).errorColor,
+        ),
+      );
+      Navigator.pop(context);
+    } on PlatformException catch (error) {
+      var message = 'An error occured.';
+      if (error.message != null) {
+        message = error.message as String;
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+          backgroundColor: Theme.of(context).errorColor,
+        ),
+      );
+    }
   }
 
   @override
@@ -91,8 +112,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                                 //   ),
                                 // ),
                                 Container(
-                                  height: 50,
-                                  width: 150,
+                                  height: 60,
+                                  width: 200,
                                   child: TextFormField(
                                     key: const ValueKey('email'),
                                     controller: emailController,
@@ -123,16 +144,17 @@ class ForgotPasswordScreen extends StatelessWidget {
                   const SizedBox(height: 200),
                   Center(
                     child: GradientButton(
-                      text: "Next",
+                      text: "Send Link",
                       buttonWidth: 150,
-                      function:(){ resetPassword;
-                      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Password Reset Link Sent."),
-          backgroundColor: Theme.of(context).errorColor,
-        ),
-      );
-    Navigator.pop(context);
+                      function: () {
+                        resetPassword(context);
+                        // ScaffoldMessenger.of(context).showSnackBar(
+                        //   SnackBar(
+                        //     content: Text("Password Reset Link Sent."),
+                        //     backgroundColor: Theme.of(context).errorColor,
+                        //   ),
+                        // );
+                        // Navigator.pop(context);
                       },
                       // () => Navigator.push(
                       //   context,
