@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../designs/background.dart';
-
+import '../../widgets/app/DiabetesInput.dart';
 class DiabetesPredictionScreen extends StatefulWidget {
   static const routeName = '/diabetes';
   @override
@@ -30,7 +30,7 @@ class _DiabetesPredictionScreenState extends State<DiabetesPredictionScreen> {
         children: [
           Background(),
           Container(
-            child: Text("diabetes"),
+            child: DiabetesInput(),
           ),
         ],
       ),
