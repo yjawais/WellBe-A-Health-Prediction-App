@@ -4,15 +4,15 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-// diabetesInput.dart: Defines a Stateful widget which takes numerical values of diabetes test and
+// HeartInput.dart: Defines a Stateful widget which takes numerical values of diabetes test and
 // get diabetes risk result. Sends the numerical data given by user through HTTP POST request to REST API Endpoint.
 
-class DiabetesInput extends StatefulWidget {
+class HeartInput extends StatefulWidget {
   @override
-  _DiabetesInputState createState() => _DiabetesInputState();
+  _HeartInputState createState() => _HeartInputState();
 }
 
-class _DiabetesInputState extends State<DiabetesInput> {
+class _HeartInputState extends State<HeartInput> {
   final _formKey = GlobalKey<FormState>();
   int? preg, glucose, bp, st, insulin, age;
   double? dpf, bmi;
@@ -41,28 +41,18 @@ class _DiabetesInputState extends State<DiabetesInput> {
     // final isValid = _formKey.currentState!.validate();
 
     _formKey.currentState?.save();
-    Map<String, String> headers = {"Content-type": "text/html"};
+    Map<String, String> headers = {"Content-type": "application/json"};
     Map<String, String> body = {
-        //once without encode once float error
-        //"disease": "diabetes",
-        // "preg": "$preg",
-        // "glucose": "$glucose",
-        // "blood pressure": "$bp",
-        // "skin thickness": "$st",
-        // "insulin": "$insulin",
-        // "BMI": "$bmi",
-        // "diabetes pedegree function": "$dpf",
-        // "age": "$age",
-        //form
-        "pregnancies": "$preg",
-        "glucose": "$glucose",
-        "bloodpressure": "$bp",
-        "skinthickness": "$st",
-        "insulin": "$insulin",
-        "bmi": "$bmi",
-        "dpf": "$dpf",
-        "age": "$age",
-      };
+     
+      "pregnancies": "$preg",
+      "glucose": "$glucose",
+      "bloodpressure": "$bp",
+      "skinthickness": "$st",
+      "insulin": "$insulin",
+      "bmi": "$bmi",
+      "dpf": "$dpf",
+      "age": "$age",
+    };
     http.Response response = await http.post(
       url,
       //headers: headers,
@@ -71,14 +61,12 @@ class _DiabetesInputState extends State<DiabetesInput> {
     print('sent api');
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body.toString()}');
-  
 
-   //print(response.body.toString());
-  // print(json.decode(resonse.body);//throws error here
+    //print(response.body.toString());
+    // print(json.decode(resonse.body);//throws error here
 
     setState(() {
-      // show = jsonDecode(response.body)['prediction'];//throws errror
-    
+      // show = jsonDecode(response.body)['prediction'];//throws errror here
     });
   }
 
@@ -104,9 +92,9 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     decoration: InputDecoration(
                       labelText: "preg",
                       fillColor: Colors.white,
-                      border: new OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(8.0),
-                        borderSide: new BorderSide(),
+                      border:OutlineInputBorder(
+                        borderRadius:BorderRadius.circular(8.0),
+                        borderSide:const BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
@@ -123,15 +111,15 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     decoration: InputDecoration(
                       labelText: "Glucose",
                       fillColor: Colors.white,
-                      border: new OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(8.0),
-                        borderSide: new BorderSide(),
+                      border:OutlineInputBorder(
+                        borderRadius:BorderRadius.circular(8.0),
+                        borderSide:const BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        glucose = value as int ;
+                        glucose = value as int;
                       });
                     },
                   ),
@@ -142,9 +130,9 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     decoration: InputDecoration(
                       labelText: "Blood Pressure",
                       fillColor: Colors.white,
-                      border: new OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(8.0),
-                        borderSide: new BorderSide(),
+                      border:OutlineInputBorder(
+                        borderRadius:BorderRadius.circular(8.0),
+                        borderSide:const BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
@@ -161,9 +149,9 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     decoration: InputDecoration(
                       labelText: "Skin Thickness",
                       fillColor: Colors.white,
-                      border: new OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(8.0),
-                        borderSide: new BorderSide(),
+                      border:OutlineInputBorder(
+                        borderRadius:BorderRadius.circular(8.0),
+                        borderSide:const BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
@@ -180,9 +168,9 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     decoration: InputDecoration(
                       labelText: "Insulin",
                       fillColor: Colors.white,
-                      border: new OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(8.0),
-                        borderSide: new BorderSide(),
+                      border:OutlineInputBorder(
+                        borderRadius:BorderRadius.circular(8.0),
+                        borderSide:const BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
@@ -199,9 +187,9 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     decoration: InputDecoration(
                       labelText: "BMI",
                       fillColor: Colors.white,
-                      border: new OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(8.0),
-                        borderSide: new BorderSide(),
+                      border:OutlineInputBorder(
+                        borderRadius:BorderRadius.circular(8.0),
+                        borderSide:const BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
@@ -218,9 +206,9 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     decoration: InputDecoration(
                       labelText: "DiabetesPedegree Function",
                       fillColor: Colors.white,
-                      border: new OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(8.0),
-                        borderSide: new BorderSide(),
+                      border:OutlineInputBorder(
+                        borderRadius:BorderRadius.circular(8.0),
+                        borderSide:const BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
@@ -237,9 +225,9 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     decoration: InputDecoration(
                       labelText: "Age",
                       fillColor: Colors.white,
-                      border: new OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(8.0),
-                        borderSide: new BorderSide(),
+                      border:OutlineInputBorder(
+                        borderRadius:BorderRadius.circular(8.0),
+                        borderSide:const BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
@@ -250,51 +238,52 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     },
                   ),
                 ),
-                show == 1
-                    ? Card(
-                        child: ListTile(
-                          subtitle: Text("High Risk",
-                              style: TextStyle(
-                                  fontSize: 22.5,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.red)),
-                          title: Text("Your Diabetes Risk",
-                              style: TextStyle(
-                                fontSize: 17.5,
-                                fontWeight: FontWeight.w500,
-                              )),
-                        ),
-                      )
-                    : show == 0
-                        ? Card(
-                            child: ListTile(
-                              subtitle: Text("Low Risk",
-                                  style: TextStyle(
-                                      fontSize: 22.5,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.green)),
-                              title: Text("Your Diabetes Risk",
-                                  style: TextStyle(
-                                    fontSize: 17.5,
-                                    fontWeight: FontWeight.w500,
-                                  )),
-                            ),
-                          )
-                        : Card(
-                            child: ListTile(
-                              subtitle: Text("Not Tested",
-                                  style: TextStyle(
-                                      fontSize: 22.5,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.grey)),
-                              title: Text("Your Diabetes Risk",
-                                  style: TextStyle(
-                                    fontSize: 17.5,
-                                    fontWeight: FontWeight.w500,
-                                  )),
-                            ),
-                          ),
-                SizedBox(height: 100)
+                if (show == 1)
+                  Card(
+                    child:const ListTile(
+                      subtitle: Text("High Risk",
+                          style: TextStyle(
+                              fontSize: 22.5,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.red)),
+                      title: Text("Your Diabetes Risk",
+                          style: TextStyle(
+                            fontSize: 17.5,
+                            fontWeight: FontWeight.w500,
+                          )),
+                    ),
+                  ),
+                if (show == 0)
+                  Card(
+                    child:const ListTile(
+                      subtitle: Text("Low Risk",
+                          style: TextStyle(
+                              fontSize: 22.5,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.green)),
+                      title: Text("Your Diabetes Risk",
+                          style: TextStyle(
+                            fontSize: 17.5,
+                            fontWeight: FontWeight.w500,
+                          )),
+                    ),
+                  ),
+                if (show == -1)
+                  Card(
+                    child:const ListTile(
+                      subtitle: Text("Not Tested",
+                          style: TextStyle(
+                              fontSize: 22.5,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey)),
+                      title: Text("Your Diabetes Risk",
+                          style: TextStyle(
+                            fontSize: 17.5,
+                            fontWeight: FontWeight.w500,
+                          )),
+                    ),
+                  ),
+               const SizedBox(height: 100)
               ],
             ),
           ),
