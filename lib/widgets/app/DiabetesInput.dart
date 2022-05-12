@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:async';
-import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import './dialogbox.dart';
@@ -46,17 +45,7 @@ class _DiabetesInputState extends State<DiabetesInput> {
 
     Map<String, String> headers = {"Content-type": "text/html"};
     Map<String, String> body = {
-      //once without encode once float error
-      //"disease": "diabetes",
-      // "preg": "$preg",
-      // "glucose": "$glucose",
-      // "blood pressure": "$bp",
-      // "skin thickness": "$st",
-      // "insulin": "$insulin",
-      // "BMI": "$bmi",
-      // "diabetes pedegree function": "$dpf",
-      // "age": "$age",
-      //form
+      
       "Pregnancies": "$preg",
       "Glucose": "$glucose",
       "BloodPressure": "$bp",
@@ -71,12 +60,12 @@ class _DiabetesInputState extends State<DiabetesInput> {
       //headers: headers,
       body: body,
     );
-    print('sent api');
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body.toString()}');
+    
+    // print('Response status: ${response.statusCode}');//uncomment while testing
+    // print('Response body: ${response.body.toString()}');
 
     //print(response.body.toString());
-    print(json.decode(response.body)['person is diabatic']);
+    //print(json.decode(response.body)['person is diabatic']);
 
     setState(() {
       show = int.parse(json.decode(response.body)['person is diabatic']);
@@ -102,7 +91,7 @@ class _DiabetesInputState extends State<DiabetesInput> {
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 18,
-                        //fontWeight: FontWeight.bold,
+                    
                       ),
                     ),
                   ),
@@ -272,12 +261,13 @@ class _DiabetesInputState extends State<DiabetesInput> {
                       dpf = dpf ?? 0.47;
                       age = age ?? 35;
                       getPredictions(
-                          preg, glucose, bp, st, insulin, bmi, age, dpf).then((_) => showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return DialogBox(show);
-                          }));
-                      
+                              preg, glucose, bp, st, insulin, bmi, age, dpf)
+                          .then((_) => showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return DialogBox(show);
+                              }));
+
                       print(
                           "$preg, $glucose, $bp, $st, $insulin, $bmi, $age, $dpf");
                     },

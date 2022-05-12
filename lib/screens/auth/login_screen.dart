@@ -16,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   var _isLoading = false;
 
-  void _submitAuthForm(
+ Future<void> _submitAuthForm(
     String email,
     String password,
     BuildContext ctx,

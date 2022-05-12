@@ -13,7 +13,7 @@ class _DiabetesPredictionScreenState extends State<DiabetesPredictionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("diabetes prediction"),
+        title: Text("Diabetes Prediction"),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
