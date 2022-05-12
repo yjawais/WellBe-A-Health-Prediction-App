@@ -16,7 +16,7 @@ class _DiabetesInputState extends State<DiabetesInput> {
   final _formKey = GlobalKey<FormState>();
   int? preg, glucose, bp, st, insulin, age;
   double? dpf, bmi;
-  var url = Uri.parse('https://mldiabete.herokuapp.com/predict');
+  var url = Uri.parse('https://wellbedia.herokuapp.com/pre');
   // Uri(
   //   scheme: 'https',
   //   host: 'mldiabete.herokuapp.com',
@@ -41,6 +41,8 @@ class _DiabetesInputState extends State<DiabetesInput> {
     // final isValid = _formKey.currentState!.validate();
 
     _formKey.currentState?.save();
+    FocusScope.of(context).unfocus();
+    
     Map<String, String> headers = {"Content-type": "text/html"};
     Map<String, String> body = {
         //once without encode once float error
@@ -54,14 +56,14 @@ class _DiabetesInputState extends State<DiabetesInput> {
         // "diabetes pedegree function": "$dpf",
         // "age": "$age",
         //form
-        "pregnancies": "$preg",
-        "glucose": "$glucose",
-        "bloodpressure": "$bp",
-        "skinthickness": "$st",
-        "insulin": "$insulin",
-        "bmi": "$bmi",
-        "dpf": "$dpf",
-        "age": "$age",
+        "Pregnancies": "$preg",
+        "Glucose": "$glucose",
+        "BloodPressure": "$bp",
+        "SkinThickness": "$st",
+        "Insulin": "$insulin",
+        "BMI": "$bmi",
+        "DiabetesPedigreeFunction": "$dpf",
+        "Age": "$age",
       };
     http.Response response = await http.post(
       url,
@@ -74,10 +76,10 @@ class _DiabetesInputState extends State<DiabetesInput> {
   
 
    //print(response.body.toString());
-  // print(json.decode(resonse.body);//throws error here
+ print(json.decode(response.body)['person is diabatic']);
 
     setState(() {
-      // show = jsonDecode(response.body)['prediction'];//throws errror
+       show = int.parse(json.decode(response.body)['person is diabatic']);
     
     });
   }
@@ -112,7 +114,7 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        preg = value as int;
+                        preg = int.parse(value);
                       });
                     },
                   ),
@@ -131,7 +133,7 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        glucose = value as int ;
+                        glucose = int.parse(value) ;
                       });
                     },
                   ),
@@ -150,7 +152,7 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        bp = value as int;
+                        bp = int.parse(value);
                       });
                     },
                   ),
@@ -169,7 +171,7 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        st = value as int;
+                        st = int.parse(value);
                       });
                     },
                   ),
@@ -188,7 +190,7 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        insulin = value as int;
+                        insulin = int.parse(value);
                       });
                     },
                   ),
@@ -207,7 +209,7 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        bmi = value as double;
+                        bmi = double.parse(value);
                       });
                     },
                   ),
@@ -226,7 +228,7 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        dpf = value as double;
+                        dpf = double.parse(value);
                       });
                     },
                   ),
@@ -245,7 +247,7 @@ class _DiabetesInputState extends State<DiabetesInput> {
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        age = value as int;
+                        age = int.parse(value);
                       });
                     },
                   ),

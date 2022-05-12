@@ -43,8 +43,18 @@ class _HeartInputState extends State<HeartInput> {
     _formKey.currentState?.save();
     Map<String, String> headers = {"Content-type": "application/json"};
     Map<String, String> body = {
-     
-      "pregnancies": "$preg",
+      //once without encode once float error
+      //"disease": "diabetes",
+      // "preg": "$preg",
+      // "glucose": "$glucose",
+      // "blood pressure": "$bp",
+      // "skin thickness": "$st",
+      // "insulin": "$insulin",
+      // "BMI": "$bmi",
+      // "diabetes pedegree function": "$dpf",
+      // "age": "$age",
+      //form
+      "Pregnancies": "$preg",
       "glucose": "$glucose",
       "bloodpressure": "$bp",
       "skinthickness": "$st",
@@ -69,7 +79,7 @@ class _HeartInputState extends State<HeartInput> {
       // show = jsonDecode(response.body)['prediction'];//throws errror here
     });
   }
-
+//dialogbox for output?
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,15 +102,15 @@ class _HeartInputState extends State<HeartInput> {
                     decoration: InputDecoration(
                       labelText: "preg",
                       fillColor: Colors.white,
-                      border:OutlineInputBorder(
-                        borderRadius:BorderRadius.circular(8.0),
-                        borderSide:const BorderSide(),
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(8.0),
+                        borderSide: new BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        preg = value as int;
+                        preg = int.parse(value);
                       });
                     },
                   ),
@@ -111,15 +121,15 @@ class _HeartInputState extends State<HeartInput> {
                     decoration: InputDecoration(
                       labelText: "Glucose",
                       fillColor: Colors.white,
-                      border:OutlineInputBorder(
-                        borderRadius:BorderRadius.circular(8.0),
-                        borderSide:const BorderSide(),
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(8.0),
+                        borderSide: new BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        glucose = value as int;
+                        glucose = int.parse(value);
                       });
                     },
                   ),
@@ -130,15 +140,15 @@ class _HeartInputState extends State<HeartInput> {
                     decoration: InputDecoration(
                       labelText: "Blood Pressure",
                       fillColor: Colors.white,
-                      border:OutlineInputBorder(
-                        borderRadius:BorderRadius.circular(8.0),
-                        borderSide:const BorderSide(),
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(8.0),
+                        borderSide: new BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        bp = value as int;
+                        bp = int.parse(value);
                       });
                     },
                   ),
@@ -149,15 +159,15 @@ class _HeartInputState extends State<HeartInput> {
                     decoration: InputDecoration(
                       labelText: "Skin Thickness",
                       fillColor: Colors.white,
-                      border:OutlineInputBorder(
-                        borderRadius:BorderRadius.circular(8.0),
-                        borderSide:const BorderSide(),
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(8.0),
+                        borderSide: new BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        st = value as int;
+                        st = int.parse(value);
                       });
                     },
                   ),
@@ -168,15 +178,15 @@ class _HeartInputState extends State<HeartInput> {
                     decoration: InputDecoration(
                       labelText: "Insulin",
                       fillColor: Colors.white,
-                      border:OutlineInputBorder(
-                        borderRadius:BorderRadius.circular(8.0),
-                        borderSide:const BorderSide(),
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(8.0),
+                        borderSide: new BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        insulin = value as int;
+                        insulin = int.parse(value);
                       });
                     },
                   ),
@@ -187,15 +197,15 @@ class _HeartInputState extends State<HeartInput> {
                     decoration: InputDecoration(
                       labelText: "BMI",
                       fillColor: Colors.white,
-                      border:OutlineInputBorder(
-                        borderRadius:BorderRadius.circular(8.0),
-                        borderSide:const BorderSide(),
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(8.0),
+                        borderSide: new BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        bmi = value as double;
+                        bmi = double.parse(value);
                       });
                     },
                   ),
@@ -206,15 +216,15 @@ class _HeartInputState extends State<HeartInput> {
                     decoration: InputDecoration(
                       labelText: "DiabetesPedegree Function",
                       fillColor: Colors.white,
-                      border:OutlineInputBorder(
-                        borderRadius:BorderRadius.circular(8.0),
-                        borderSide:const BorderSide(),
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(8.0),
+                        borderSide: new BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        dpf = value as double;
+                        dpf = double.parse(value);
                       });
                     },
                   ),
@@ -225,22 +235,22 @@ class _HeartInputState extends State<HeartInput> {
                     decoration: InputDecoration(
                       labelText: "Age",
                       fillColor: Colors.white,
-                      border:OutlineInputBorder(
-                        borderRadius:BorderRadius.circular(8.0),
-                        borderSide:const BorderSide(),
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(8.0),
+                        borderSide: new BorderSide(),
                       ),
                     ),
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        age = value as int;
+                        age = int.parse(value);
                       });
                     },
                   ),
                 ),
                 if (show == 1)
                   Card(
-                    child:const ListTile(
+                    child: ListTile(
                       subtitle: Text("High Risk",
                           style: TextStyle(
                               fontSize: 22.5,
@@ -255,7 +265,7 @@ class _HeartInputState extends State<HeartInput> {
                   ),
                 if (show == 0)
                   Card(
-                    child:const ListTile(
+                    child: ListTile(
                       subtitle: Text("Low Risk",
                           style: TextStyle(
                               fontSize: 22.5,
@@ -270,7 +280,7 @@ class _HeartInputState extends State<HeartInput> {
                   ),
                 if (show == -1)
                   Card(
-                    child:const ListTile(
+                    child: ListTile(
                       subtitle: Text("Not Tested",
                           style: TextStyle(
                               fontSize: 22.5,
@@ -283,7 +293,7 @@ class _HeartInputState extends State<HeartInput> {
                           )),
                     ),
                   ),
-               const SizedBox(height: 100)
+                SizedBox(height: 100)
               ],
             ),
           ),
