@@ -33,6 +33,6 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 ##Contributors
-<a href = "https://https://github.com/yjawais/WellBe-A-Health-Prediction-App/contributors">
+<a href = "https://github.com/yjawais/WellBe-A-Health-Prediction-App/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo = GitHub_username/repository_name"/>
 </a>
