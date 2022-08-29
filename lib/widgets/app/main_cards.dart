@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class MainCard extends StatelessWidget {
@@ -5,13 +6,19 @@ class MainCard extends StatelessWidget {
   final String title;
   final String description;
   final String route;
-  MainCard(this.image, this.title, this.description,this.route,);
+  const MainCard(
+    this.image,
+    this.title,
+    this.description,
+    this.route, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=>Navigator.of(context).pushNamed(route),
-          child: Container(
+      onTap: () => Navigator.of(context).pushNamed(route),
+      child: Container(
           height: 135.0,
           margin: const EdgeInsets.symmetric(
             vertical: 16.0,
@@ -19,7 +26,6 @@ class MainCard extends StatelessWidget {
           ),
           child: Stack(
             children: <Widget>[
-             
               Container(
                 child: Container(
                   padding: const EdgeInsets.all(15),
@@ -28,7 +34,7 @@ class MainCard extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
@@ -44,16 +50,15 @@ class MainCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
-                        Color(0xff46b3e6),
-                     
-                     Color(0xfface5ff),
+                      Color(0xff46b3e6),
+                      Color(0xfface5ff),
                     ],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(8.0),
-                  boxShadow: <BoxShadow>[
+                  boxShadow:const <BoxShadow>[
                     BoxShadow(
                       color: Colors.black12,
                       blurRadius: 10.0,
@@ -86,7 +91,6 @@ class MainCard extends StatelessWidget {
                     image,
                     height: 95.0,
                     width: 95.0,
-                    
                   ),
                 ),
               ),

@@ -1,7 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
 
-import '../../screens/auth/login_screen.dart';
 import '../../designs/gradient_button.dart';
+import '../../screens/auth/login_screen.dart';
 
 class SignupForm extends StatefulWidget {
   final void Function(
@@ -14,9 +15,11 @@ class SignupForm extends StatefulWidget {
   bool isLoading;
 
   SignupForm(
+   
     this.submitFn,
     this.isLoading,
-  );
+    { Key? key,}
+  ) : super(key: key);
   @override
   _SignupFormState createState() => _SignupFormState();
 }
@@ -228,12 +231,12 @@ class _SignupFormState extends State<SignupForm> {
                     const  SizedBox(height: 15),
                  // if (!widget.isLoading)
                     FlatButton(
-                      textColor: Theme.of(context).accentColor,
+                      textColor: Theme.of(context).colorScheme.secondary,
                       onPressed: () {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginScreen()));
+                                builder: (context) =>const LoginScreen()));
                       },
                       child: const  Text(
                         'Already have an account?',
@@ -250,4 +253,5 @@ class _SignupFormState extends State<SignupForm> {
       ),
     );
   }
+
 }

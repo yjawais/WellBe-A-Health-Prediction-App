@@ -5,11 +5,13 @@ import '../../designs/background.dart';
 import '../../widgets/app/tips_card.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Background(),
+        const Background(),
         Scaffold(
           appBar: AppBar(
             actions: [
@@ -17,22 +19,20 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: DropdownButton(
                   underline: Container(),
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.more_vert,
                     color: Colors.white,
                     size: 35,
                   ),
                   items: [
                     DropdownMenuItem(
-                      child: Container(
-                        child: Row(
-                          children: [
-                            Icon(Icons.exit_to_app,
-                                color: Theme.of(context).errorColor),
-                            SizedBox(width: 8),
-                            Text('Logout'),
-                          ],
-                        ),
+                      child: Row(
+                        children: [
+                          Icon(Icons.exit_to_app,
+                              color: Theme.of(context).errorColor),
+                          const SizedBox(width: 8),
+                          const Text('Logout'),
+                        ],
                       ),
                       value: 'logout',
                     ),
@@ -85,21 +85,21 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const SizedBox(height: 25),
-                  MainCard(
+                  const MainCard(
                     "assets/images/heart.png",
                     "Heart Disease Prediction",
                     "A model to predict the chances of a heart disease",
                     '/heart',
                   ),
-                  MainCard(
+                  const MainCard(
                     "assets/images/diabetes.png",
                     "Diabetes Prediction",
                     "A model to predict diabetes risk",
                     '/diabetes',
                   ),
-                 const SizedBox(height: 75),
+                  const SizedBox(height: 75),
                   Container(
-                    child: TipsCard(),
+                    child: const TipsCard(),
                     alignment: Alignment.bottomCenter,
                   ),
                 ],

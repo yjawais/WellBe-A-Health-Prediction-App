@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../designs/background.dart';
 import '../../widgets/app/heartInput.dart';
+
 class HeartPredictionScreen extends StatefulWidget {
   static const routeName = '/heart';
+
+  const HeartPredictionScreen({Key? key}) : super(key: key);
   @override
   _HeartPredictionScreenState createState() => _HeartPredictionScreenState();
 }
@@ -12,7 +15,7 @@ class _HeartPredictionScreenState extends State<HeartPredictionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Heart prediction"),
+        title: const Text("Heart prediction"),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -26,11 +29,9 @@ class _HeartPredictionScreenState extends State<HeartPredictionScreen> {
         ),
       ),
       body: Stack(
-        children: [
+        children: const [
           Background(),
-          Container(
-            child: HeartInput(),
-          ),
+          HeartInput(),
         ],
       ),
     );

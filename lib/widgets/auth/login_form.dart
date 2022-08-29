@@ -1,6 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../screens/auth/signup_screen.dart';
 //import '../../screens/auth/password_reset/passforgt.dart';
@@ -18,9 +19,11 @@ class LoginForm extends StatefulWidget {
   bool isLoading;
 
   LoginForm(
+   
     this.submitFn,
     this.isLoading,
-  );
+    { Key? key,}
+  ) : super(key: key);
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -271,12 +274,12 @@ class _LoginFormState extends State<LoginForm> {
                     const SizedBox(height: 10),
                  // if (!widget.isLoading)
                     FlatButton(
-                      textColor: Theme.of(context).accentColor,
+                      textColor: Theme.of(context).colorScheme.secondary,
                       onPressed: () {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignupScreen()));
+                                builder: (context) => const SignupScreen()));
                       },
                       child:const Text('Signup Instead?'),
                     ),

@@ -1,3 +1,5 @@
+// ignore_for_file: must_call_super
+
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -8,6 +10,8 @@ import './dialogbox.dart';
 // get diabetes risk result. Sends the numerical data given by user through HTTP POST request to REST API Endpoint.
 
 class DiabetesInput extends StatefulWidget {
+  const DiabetesInput({Key? key}) : super(key: key);
+
   @override
   _DiabetesInputState createState() => _DiabetesInputState();
 }
@@ -45,7 +49,6 @@ class _DiabetesInputState extends State<DiabetesInput> {
 
     Map<String, String> headers = {"Content-type": "text/html"};
     Map<String, String> body = {
-      
       "Pregnancies": "$preg",
       "Glucose": "$glucose",
       "BloodPressure": "$bp",
@@ -60,7 +63,7 @@ class _DiabetesInputState extends State<DiabetesInput> {
       //headers: headers,
       body: body,
     );
-    
+
     // print('Response status: ${response.statusCode}');//uncomment while testing
     // print('Response body: ${response.body.toString()}');
 
@@ -75,278 +78,275 @@ class _DiabetesInputState extends State<DiabetesInput> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            child: Container(
-              padding: EdgeInsets.all(15),
-              margin: EdgeInsets.all(5),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Text(
-                      "Enter Following Parameters",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 18,
-                    
-                      ),
+      body: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
+          child: Container(
+            padding: const EdgeInsets.all(15),
+            margin: const EdgeInsets.all(5),
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(4.0),
+                  child: Text(
+                    "Enter Following Parameters",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 18,
                     ),
                   ),
-                  const SizedBox(height: 15),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Number of Pregnancies",
-                        fillColor: Colors.white,
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(8.0),
-                          borderSide: new BorderSide(),
-                        ),
+                ),
+                const SizedBox(height: 15),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Number of Pregnancies",
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: const BorderSide(),
                       ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) {
-                        setState(() {
-                          preg = int.parse(value);
-                        });
-                      },
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Glucose (mg/dL) eg. 80",
-                        fillColor: Colors.white,
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(8.0),
-                          borderSide: new BorderSide(),
-                        ),
-                      ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) {
-                        setState(() {
-                          glucose = int.parse(value);
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Blood Pressure (mmHg) eg. 80",
-                        fillColor: Colors.white,
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(8.0),
-                          borderSide: new BorderSide(),
-                        ),
-                      ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) {
-                        setState(() {
-                          bp = int.parse(value);
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Skin Thickness (mm)",
-                        fillColor: Colors.white,
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(8.0),
-                          borderSide: new BorderSide(),
-                        ),
-                      ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) {
-                        setState(() {
-                          st = int.parse(value);
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Insulin (IU/mL) range(30-230 IU/mL)",
-                        fillColor: Colors.white,
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(8.0),
-                          borderSide: new BorderSide(),
-                        ),
-                      ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) {
-                        setState(() {
-                          insulin = int.parse(value);
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "BMI (kg/m²) eg. 23.1",
-                        fillColor: Colors.white,
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(8.0),
-                          borderSide: new BorderSide(),
-                        ),
-                      ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) {
-                        setState(() {
-                          bmi = double.parse(value);
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText:
-                            "DPF (depends on family history, range 0.1- 0.99)",
-                        fillColor: Colors.white,
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(8.0),
-                          borderSide: new BorderSide(),
-                        ),
-                      ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) {
-                        setState(() {
-                          dpf = double.parse(value);
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Age",
-                        fillColor: Colors.white,
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(8.0),
-                          borderSide: new BorderSide(),
-                        ),
-                      ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) {
-                        setState(() {
-                          age = int.parse(value);
-                        });
-                      },
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  RaisedButton(
-                    onPressed: () {
-                      preg = preg ?? 0;
-                      glucose = glucose ?? 121;
-                      bp = bp ?? 69;
-                      st = st ?? 2;
-                      insulin = insulin ?? 0;
-                      bmi = bmi ?? 22;
-                      dpf = dpf ?? 0.47;
-                      age = age ?? 35;
-                      getPredictions(
-                              preg, glucose, bp, st, insulin, bmi, age, dpf)
-                          .then((_) => showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return DialogBox(show);
-                              }));
-
-                      print(
-                          "$preg, $glucose, $bp, $st, $insulin, $bmi, $age, $dpf");
+                    keyboardType: TextInputType.number,
+                    onChanged: (value) {
+                      setState(() {
+                        preg = int.parse(value);
+                      });
                     },
-                    shape: RoundedRectangleBorder(
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Glucose (mg/dL) eg. 80",
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: const BorderSide(),
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                    onChanged: (value) {
+                      setState(() {
+                        glucose = int.parse(value);
+                      });
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Blood Pressure (mmHg) eg. 80",
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: const BorderSide(),
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                    onChanged: (value) {
+                      setState(() {
+                        bp = int.parse(value);
+                      });
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Skin Thickness (mm)",
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: const BorderSide(),
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                    onChanged: (value) {
+                      setState(() {
+                        st = int.parse(value);
+                      });
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Insulin (IU/mL) range(30-230 IU/mL)",
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: const BorderSide(),
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                    onChanged: (value) {
+                      setState(() {
+                        insulin = int.parse(value);
+                      });
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "BMI (kg/m²) eg. 23.1",
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: const BorderSide(),
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                    onChanged: (value) {
+                      setState(() {
+                        bmi = double.parse(value);
+                      });
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText:
+                          "DPF (depends on family history, range 0.1- 0.99)",
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: const BorderSide(),
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                    onChanged: (value) {
+                      setState(() {
+                        dpf = double.parse(value);
+                      });
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Age",
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: const BorderSide(),
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                    onChanged: (value) {
+                      setState(() {
+                        age = int.parse(value);
+                      });
+                    },
+                  ),
+                ),
+                const SizedBox(height: 20),
+                RaisedButton(
+                  onPressed: () {
+                    preg = preg ?? 0;
+                    glucose = glucose ?? 121;
+                    bp = bp ?? 69;
+                    st = st ?? 2;
+                    insulin = insulin ?? 0;
+                    bmi = bmi ?? 22;
+                    dpf = dpf ?? 0.47;
+                    age = age ?? 35;
+                    getPredictions(
+                            preg, glucose, bp, st, insulin, bmi, age, dpf)
+                        .then((_) => showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return DialogBox(show);
+                            }));
+
+                    // print(
+                    //     "$preg, $glucose, $bp, $st, $insulin, $bmi, $age, $dpf");
+                  },
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  padding: const EdgeInsets.all(0.0),
+                  child: Ink(
+                    decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [
+                            Color(0xff54C0BC),
+                            Color(0xff1fc585),
+                          ],
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                        ),
                         borderRadius: BorderRadius.circular(10.0)),
-                    padding: const EdgeInsets.all(0.0),
-                    child: Ink(
-                      decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [
-                              Color(0xff54C0BC),
-                              Color(0xff1fc585),
-                            ],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                          ),
-                          borderRadius: BorderRadius.circular(10.0)),
-                      child: Container(
-                        constraints:
-                            BoxConstraints(maxWidth: 150, minHeight: 50.0),
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Get Results",
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+                    child: Container(
+                      constraints: const BoxConstraints(
+                          maxWidth: 150, minHeight: 50.0),
+                      alignment: Alignment.center,
+                      child: const Text(
+                        "Get Results",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
-                  // show == 1
-                  //     ? Card(
-                  //         child: ListTile(
-                  //           subtitle: Text("High Risk",
-                  //               style: TextStyle(
-                  //                   fontSize: 22.5,
-                  //                   fontWeight: FontWeight.w500,
-                  //                   color: Colors.red)),
-                  //           title: Text("Your Diabetes Risk",
-                  //               style: TextStyle(
-                  //                 fontSize: 17.5,
-                  //                 fontWeight: FontWeight.w500,
-                  //               )),
-                  //         ),
-                  //       )
-                  //     : show == 0
-                  //         ? Card(
-                  //             child: ListTile(
-                  //               subtitle: Text("Low Risk",
-                  //                   style: TextStyle(
-                  //                       fontSize: 22.5,
-                  //                       fontWeight: FontWeight.w500,
-                  //                       color: Colors.green)),
-                  //               title: Text("Your Diabetes Risk",
-                  //                   style: TextStyle(
-                  //                     fontSize: 17.5,
-                  //                     fontWeight: FontWeight.w500,
-                  //                   )),
-                  //             ),
-                  //           )
-                  //         : Card(
-                  //             child: ListTile(
-                  //               subtitle: Text("Not Tested",
-                  //                   style: TextStyle(
-                  //                       fontSize: 22.5,
-                  //                       fontWeight: FontWeight.w500,
-                  //                       color: Colors.grey)),
-                  //               title: Text("Your Diabetes Risk",
-                  //                   style: TextStyle(
-                  //                     fontSize: 17.5,
-                  //                     fontWeight: FontWeight.w500,
-                  //                   )),
-                  //             ),
-                  //           ),
-                  // SizedBox(height: 100)
-                ],
-              ),
+                ),
+                // show == 1
+                //     ? Card(
+                //         child: ListTile(
+                //           subtitle: Text("High Risk",
+                //               style: TextStyle(
+                //                   fontSize: 22.5,
+                //                   fontWeight: FontWeight.w500,
+                //                   color: Colors.red)),
+                //           title: Text("Your Diabetes Risk",
+                //               style: TextStyle(
+                //                 fontSize: 17.5,
+                //                 fontWeight: FontWeight.w500,
+                //               )),
+                //         ),
+                //       )
+                //     : show == 0
+                //         ? Card(
+                //             child: ListTile(
+                //               subtitle: Text("Low Risk",
+                //                   style: TextStyle(
+                //                       fontSize: 22.5,
+                //                       fontWeight: FontWeight.w500,
+                //                       color: Colors.green)),
+                //               title: Text("Your Diabetes Risk",
+                //                   style: TextStyle(
+                //                     fontSize: 17.5,
+                //                     fontWeight: FontWeight.w500,
+                //                   )),
+                //             ),
+                //           )
+                //         : Card(
+                //             child: ListTile(
+                //               subtitle: Text("Not Tested",
+                //                   style: TextStyle(
+                //                       fontSize: 22.5,
+                //                       fontWeight: FontWeight.w500,
+                //                       color: Colors.grey)),
+                //               title: Text("Your Diabetes Risk",
+                //                   style: TextStyle(
+                //                     fontSize: 17.5,
+                //                     fontWeight: FontWeight.w500,
+                //                   )),
+                //             ),
+                //           ),
+                // SizedBox(height: 100)
+              ],
             ),
           ),
         ),

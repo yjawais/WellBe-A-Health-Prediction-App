@@ -2,9 +2,9 @@
     package="com.example.mini_project_sbj">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="mini_project_sbj"
+        android:label="WellBe"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"

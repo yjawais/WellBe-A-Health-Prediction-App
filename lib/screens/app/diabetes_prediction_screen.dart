@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../designs/background.dart';
-import '../../widgets/app/DiabetesInput.dart';
+import '../../widgets/app/diabetesInput.dart';
+
 class DiabetesPredictionScreen extends StatefulWidget {
   static const routeName = '/diabetes';
+
+  const DiabetesPredictionScreen({Key? key}) : super(key: key);
   @override
   _DiabetesPredictionScreenState createState() =>
       _DiabetesPredictionScreenState();
@@ -13,7 +16,7 @@ class _DiabetesPredictionScreenState extends State<DiabetesPredictionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Diabetes Prediction"),
+        title: const Text("Diabetes Prediction"),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -27,11 +30,9 @@ class _DiabetesPredictionScreenState extends State<DiabetesPredictionScreen> {
         ),
       ),
       body: Stack(
-        children: [
+        children: const [
           Background(),
-          Container(
-            child: DiabetesInput(),
-          ),
+          DiabetesInput(),
         ],
       ),
     );

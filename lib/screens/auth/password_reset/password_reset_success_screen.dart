@@ -3,6 +3,8 @@ import '../../../screens/auth/login_screen.dart';
 import '../../../designs/gradient_button.dart';
 
 class PasswordResetSuccessScreen extends StatelessWidget {
+  const PasswordResetSuccessScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,22 +43,20 @@ class PasswordResetSuccessScreen extends StatelessWidget {
                         alignment: Alignment.center,
                       ),
                     ),
-                    Container(
-                      child: Padding(
-                        padding: const  EdgeInsets.only(top: 80),
-                        // child: GestureDetector(
-                        //     onTap: () {},
-                        //     child: Image(
-                        //       image: AssetImage('lib/images/Try_Order.png'),
-                        //     )),
-                        child: GradientButton(
-                          buttonWidth: 150,
-                          text: "Back",
-                          function: () => Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginScreen(),
-                            ),
+                    Padding(
+                      padding: const  EdgeInsets.only(top: 80),
+                      // child: GestureDetector(
+                      //     onTap: () {},
+                      //     child: Image(
+                      //       image: AssetImage('lib/images/Try_Order.png'),
+                      //     )),
+                      child: GradientButton(
+                        buttonWidth: 150,
+                        text: "Back",
+                        function: () => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>const LoginScreen(),
                           ),
                         ),
                       ),

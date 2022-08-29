@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import '../../../designs/gradient_button.dart';
 import '../../../designs/background.dart';
@@ -8,13 +10,14 @@ class ForgotPasswordScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
 
-  @override
+  ForgotPasswordScreen({Key? key}) : super(key: key);
+
   void dispose() {
     emailController.dispose();
     // super.dispose();
   }
 
-  var _userEmail = '';
+ // var _userEmail = '';
 
   Future<void> resetPassword(BuildContext context) async {
     try {
@@ -22,7 +25,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           .sendPasswordResetEmail(email: emailController.text.trim());
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Password Reset Link Sent."),
+          content: const Text("Password Reset Link Sent."),
           backgroundColor: Theme.of(context).errorColor,
         ),
       );
@@ -46,7 +49,7 @@ class ForgotPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Background(),
+        const Background(),
         Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
@@ -76,10 +79,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 15),
-                  Container(
+                  const SizedBox(
                     height: 50,
                     width: 225,
-                    child: const Text(
+                    child: Text(
                       'Enter your email to be used to reset your password',
                       style: TextStyle(
                           fontSize: 12, color: Color(0xff000000), height: 1.5),
@@ -111,7 +114,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                                 //     fontSize: 12,
                                 //   ),
                                 // ),
-                                Container(
+                                SizedBox(
                                   height: 60,
                                   width: 200,
                                   child: TextFormField(

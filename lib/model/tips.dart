@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class Tip {
   final int id;
@@ -10,7 +9,7 @@ class Tip {
   );
 }
 
-const Dummy_Tips = [
+const dummyTips = [
   Tip(
     1,
     '“A healthy outside starts from the inside.”  – Robert Urich',

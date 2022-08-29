@@ -3,6 +3,8 @@ import '../../model/tips.dart';
 import 'dart:math';
 
 class TipsCard extends StatelessWidget {
+  const TipsCard({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class TipsCard extends StatelessWidget {
     //  final tipId = ModalRoute.of(context)!.settings.arguments as String;
 
     final selectedTip =
-        Dummy_Tips.firstWhere((element) => element.id == randomNumber);
+        dummyTips.firstWhere((element) => element.id == randomNumber);
     return Container(
       height: 135.0,
       margin: const EdgeInsets.symmetric(
@@ -49,8 +51,8 @@ class TipsCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    '${selectedTip.tip}',
-                    style: TextStyle(
+                    selectedTip.tip,
+                    style: const TextStyle(
                       fontSize: 14,
                       fontStyle: FontStyle.italic,
                     ),
@@ -72,7 +74,7 @@ class TipsCard extends StatelessWidget {
               ),
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(8.0),
-              boxShadow: <BoxShadow>[
+              boxShadow: const <BoxShadow>[
                 BoxShadow(
                   color: Colors.black12,
                   blurRadius: 10.0,

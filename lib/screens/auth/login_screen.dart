@@ -7,6 +7,8 @@ import '../../widgets/auth/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeName = '/login';
+
+ const LoginScreen({Key? key}) : super(key: key);
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -33,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
         email: email,
         password: password,
       );
+       
     } on PlatformException catch (error) {
       var message = 'An error occured.';
       if (error.message != null) {
@@ -62,11 +65,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
-        child: Container(
+        child: SizedBox(
           height: size.height,
           child: Stack(
             children: [
-              BackgroundSecond(),
+            const  BackgroundSecond(),
             
               LoginForm(_submitAuthForm, _isLoading),
             ],

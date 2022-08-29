@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../screens/auth/password_reset/password_reset_success_screen.dart';
 import '../../../designs/gradient_button.dart';
 
 class ResetPasswordForm extends StatefulWidget {
+  const ResetPasswordForm({Key? key}) : super(key: key);
+
   // final void Function(
   //   String password,
   //   BuildContext ctx,

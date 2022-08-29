@@ -8,6 +8,8 @@ import '../../widgets/auth/signup_form.dart';
 
 class SignupScreen extends StatefulWidget {
   static const routeName = '/signup';
+
+  const SignupScreen({Key? key}) : super(key: key);
   @override
   _SignupScreenState createState() => _SignupScreenState();
 }
@@ -74,11 +76,11 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         physics:const ClampingScrollPhysics(),
-        child: Container(
+        child: SizedBox(
           height: size.height,
           child: Stack(
             children: [
-              BackgroundSecond(),
+             const BackgroundSecond(),
               SignupForm(_submitAuthForm, _isLoading),
             ],
           ),
