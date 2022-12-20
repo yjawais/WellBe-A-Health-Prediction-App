@@ -36,10 +36,10 @@ class _LoginScreenState extends State<LoginScreen> {
         password: password,
       );
        
-    } on PlatformException catch (error) {
+    } catch (error) {
       var message = 'An error occured.';
-      if (error.message != null) {
-         message = error.message as String;
+      if (error != null) {
+         message = error as String;
       }
 
       ScaffoldMessenger.of(ctx).showSnackBar(

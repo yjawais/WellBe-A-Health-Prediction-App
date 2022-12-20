@@ -31,7 +31,8 @@ class _HeartInputState extends State<HeartInput> {
       ca,
       thal;
   double? oldpeak;
-  var url = Uri.parse('https://wellbeheart.herokuapp.com/heart');
+  var url = Uri.parse('https://wellbeheart.onrender.com/heart');
+ // var url = Uri.parse('https://wellbeheart.herokuapp.com/heart');
 
   int show = -1;
   @override

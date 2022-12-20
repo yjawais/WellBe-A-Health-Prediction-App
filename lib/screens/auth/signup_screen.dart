@@ -48,13 +48,13 @@ class _SignupScreenState extends State<SignupScreen> {
 
     
       
-    } on PlatformException catch (error) {
+    } catch (error) {
       var message = 'An error occured.';
-      if (error.message != null) {
-       // message = error.message;
+      if (error != null) {
+         message = error as String;
       }
 
-      Scaffold.of(ctx).showSnackBar(
+      ScaffoldMessenger.of(ctx).showSnackBar(
         SnackBar(
           content: Text(message),
           backgroundColor: Theme.of(context).errorColor,

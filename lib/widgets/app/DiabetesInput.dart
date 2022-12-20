@@ -20,7 +20,9 @@ class _DiabetesInputState extends State<DiabetesInput> {
   final _formKey = GlobalKey<FormState>();
   int? preg, glucose, bp, st, insulin, age;
   double? dpf, bmi;
-  var url = Uri.parse('https://wellbedia.herokuapp.com/pre');
+  var url = Uri.parse('https://welbedia.onrender.com/pre');
+
+  //var url = Uri.parse('https://wellbedia.herokuapp.com/pre');
   // Uri(
   //   scheme: 'https',
   //   host: 'mldiabete.herokuapp.com',
